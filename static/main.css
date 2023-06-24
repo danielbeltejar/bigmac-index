@@ -1,0 +1,164 @@
+:root {
+    --primary-color: #ffbc0d;
+    --secondary-color: #274f35;
+    --primary-text: #292929;
+    --secondary-text: #4a4a4a;
+}
+
+html {
+    overflow: -moz-scrollbars-horizontal; 
+    overflow-y: scroll;
+}
+
+
+body {
+    background-color: whitesmoke;
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    height: 100vh;
+    margin: 0;
+}
+
+header {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    box-shadow: 0px 14px 15px -3px rgba(0,0,0,0.1);
+}
+
+.top-header img {
+    height: 30px;    
+    filter: brightness(0) saturate(100%) invert(29%) sepia(0%) saturate(0%) hue-rotate(245deg) brightness(100%) contrast(100%);
+}
+
+.top-header h1 {
+    align-self: center;
+    margin: 20px 0;
+}
+
+.top-header {
+    padding: 0 10px;
+}
+
+@media only screen and (min-width: 1024px) {
+    .top-header h1 {
+        font-size:2.5em;
+    }
+    .top-header img {
+        height: 40px;
+    }
+    .top-header {
+        padding: 0 370px;
+    }
+}
+
+
+.flex-row {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.flex-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.flex-center {
+    justify-content: center;
+    align-items: center;
+}
+
+.flex-middle {
+    align-items: center;
+}
+
+.button {
+    height: 40px;
+    width: 40px;
+    border-radius: 0.5em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.yellow-color {
+    color: var(--primary-color);
+}
+
+.green-color {
+    color: var(--secondary-color);
+}
+
+.white-color {
+    color: whitesmoke;
+}
+
+.float-rigth {
+    margin-left: auto;
+}
+
+.green-background {
+    background-color: var(--secondary-color);
+}
+
+.yellow-background {
+    background-color: var(--primary-color);
+}
+
+.white-background {
+    background-color: whitesmoke;
+}
+
+.wide {
+    width: 100%;
+}
+
+.index {
+    box-shadow: inset 0px 10px 15px -3px rgba(0,0,0,0.1);
+    padding: 60px 0px;
+}
+
+.footer {
+    overflow: hidden;
+}
+
+.card {
+    border-radius: 1em;
+    padding: 5px 15px;
+    box-shadow: 10px 10px 15px 4px rgba(0,0,0,0.1),-10px -10px 15px 4px rgba(0,0,0,0.1);
+}
+
+.text-bold {
+    font-weight: bolder;
+}
+
+h1 {
+    color: var(--secondary-text);
+    font-family: 'Source Serif Pro', serif;
+    font-weight: bolder;
+    letter-spacing: -1px;
+    margin: 0px;
+    font-size: 2em;
+}
+
+h2 {
+    color: var(--secondary-text);
+    font-family: 'Source Serif Pro', serif;
+    font-size: 2em;
+    font-weight: 600;
+    margin-bottom: -5px;
+}
+
+p {
+    font-size: 1.05em!important; 
+    font-family: Arial, Helvetica, sans-serif;
+}
