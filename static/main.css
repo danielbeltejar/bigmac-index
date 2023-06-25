@@ -41,9 +41,68 @@ header {
     padding: 0 10px;
 }
 
+
+.card {
+    border-radius: 1em;
+    gap: 5px!important;
+    justify-content: space-between!important;
+    width: 155px;
+    padding: 7px 7px;
+    box-shadow: 10px 10px 15px 4px rgba(0,0,0,0.1),-10px -10px 15px 4px rgba(0,0,0,0.1);
+
+}
+
+.button {
+    height: 40px;
+    width: 40px;
+    border-radius: 0.5em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.card p {
+    margin: 0;
+}
+
+.card .button {
+    height: 30px;
+    width: 30px;
+    border-radius: 0.5em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.flex-row {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+}
+
+.flex-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
 @media only screen and (min-width: 1024px) {
+    .flex-row {
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+    }
+    
+    .flex-wrap {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
     .top-header h1 {
-        font-size:2.5em;
+        font-size:2.2em;
     }
     .top-header img {
         height: 40px;
@@ -51,19 +110,22 @@ header {
     .top-header {
         padding: 0 370px;
     }
-}
 
+    .card {
+        border-radius: 1em;
+        padding: 15px 15px;
+        box-shadow: 10px 10px 15px 4px rgba(0,0,0,0.1),-10px -10px 15px 4px rgba(0,0,0,0.1);
+    }
 
-.flex-row {
-    display: flex;
-    flex-direction: row;
-    gap: 20px;
-}
-
-.flex-wrap {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
+    .button {
+        height: 40px;
+        width: 40px;
+        border-radius: 0.5em;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+    }
 }
 
 .flex-column {
@@ -78,16 +140,6 @@ header {
 
 .flex-middle {
     align-items: center;
-}
-
-.button {
-    height: 40px;
-    width: 40px;
-    border-radius: 0.5em;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
 }
 
 .yellow-color {
@@ -129,12 +181,6 @@ header {
 
 .footer {
     overflow: hidden;
-}
-
-.card {
-    border-radius: 1em;
-    padding: 5px 15px;
-    box-shadow: 10px 10px 15px 4px rgba(0,0,0,0.1),-10px -10px 15px 4px rgba(0,0,0,0.1);
 }
 
 .text-bold {

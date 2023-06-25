@@ -12,10 +12,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
 
-    <link href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro&display=swap" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro&display=swap" rel="stylesheet" class="async">
+    <link href="https://cdn.jsdelivr.net/gh/duyplus/fontawesome-pro/css/all.min.css" rel="stylesheet" class="async" />
     
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flag-icon-css/css/flag-icon.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flag-icon-css/css/flag-icon.min.css" class="async">
     <link rel="stylesheet" href="/static/main.css">
     <link rel="stylesheet" href="/static/banner.css">
 
@@ -64,7 +64,7 @@
             <h1>Bigmac Index</h1>
             <div class="button green-background yellow-color float-rigth"
                 onclick="location.href='mailto:contacto@danielbeltejar.es';">
-                <i class="fa-solid fa-wallet"></i>
+                <i class="fa-solid fa-badge-dollar"></i>
             </div>
             <div class="button green-background yellow-color"
                 onclick="location.href='mailto:contacto@danielbeltejar.es';">
@@ -101,7 +101,7 @@
                         // Add the button
                         var button = document.createElement("div");
                         button.classList.add("button", "yellow-background", "white-color");
-                        button.setAttribute("onclick", "location.href='mailto:contacto@danielbeltejar.es';");
+                        button.setAttribute("onclick", "location.href='none';");
                         button.innerHTML = '<i class="fa-solid fa-chart-simple"></i>';
                         card.appendChild(button);
 
