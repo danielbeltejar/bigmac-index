@@ -20,6 +20,10 @@ body {
     margin: 0;
 }
 
+.hide {
+    display:none;
+}
+
 header {
     display: flex;
     width: 100%;

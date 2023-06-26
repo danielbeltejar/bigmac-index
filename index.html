@@ -14,7 +14,7 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro&display=swap" rel="stylesheet" class="async">
     <link href="https://cdn.jsdelivr.net/gh/duyplus/fontawesome-pro/css/all.min.css" rel="stylesheet" class="async" />
-    
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flag-icon-css/css/flag-icon.min.css" class="async">
     <link rel="stylesheet" href="/static/main.css">
     <link rel="stylesheet" href="/static/banner.css">
@@ -37,10 +37,10 @@
     <link rel="manifest" href="/manifest.webmanifest">
 
     <script type="text/javascript">
-        (function(c,l,a,r,i,t,y){
-            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        (function (c, l, a, r, i, t, y) {
+            c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
+            t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+            y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
         })(window, document, "clarity", "script", "6n7dkmur2b");
     </script>
 </head>
@@ -62,13 +62,8 @@
         <div class="top-header flex-row flex-middle">
             <img src="static/burger.svg">
             <h1>Bigmac Index</h1>
-            <div class="button green-background yellow-color float-rigth"
-                onclick="location.href='mailto:contacto@danielbeltejar.es';">
+            <div class="button button-dollars green-background yellow-color float-rigth">
                 <i class="fa-solid fa-badge-dollar"></i>
-            </div>
-            <div class="button green-background yellow-color"
-                onclick="location.href='mailto:contacto@danielbeltejar.es';">
-                <i class="fa-solid fa-sort"></i>
             </div>
         </div>
     </header>
@@ -78,15 +73,17 @@
             fetch('https://bigmac.danielbeltejar.es/v1/prices/actual')
                 .then(response => response.json())
                 .then(data => {
+                    data.sort((a, b) => a[4] - b[4]);
                     data.forEach(country => {
                         var countryName = country[0];
                         var price = country[1];
                         var currency = country[3];
+                        var priceDollars = country[4];
 
                         // Create the card element
                         var card = document.createElement("div");
                         card.classList.add("card", "flex-row", "flex-center", "white-background");
-                        
+
                         // Add the flag icon
                         var flagIcon = document.createElement("i");
                         flagIcon.classList.add("flag-icon", "flag-icon-" + countryName.toLowerCase());
@@ -94,9 +91,17 @@
 
                         // Add the price
                         var priceElement = document.createElement("p");
-                        priceElement.classList.add("text-bold");
+                        priceElement.classList.add("text-bold", "default");
                         priceElement.textContent = price + " " + currency;
                         card.appendChild(priceElement);
+
+                        // Add the dollars price
+                        var priceDollarsElement = document.createElement("p");
+                        priceDollarsElement.classList.add("text-bold", "dollars");
+                        priceDollarsElement.textContent = priceDollars + " USD";
+                        priceDollarsElement.classList.add("hide")
+                        card.appendChild(priceDollarsElement);
+
 
                         // Add the button
                         var button = document.createElement("div");
@@ -112,6 +117,34 @@
                 .catch(error => {
                     console.error('Error:', error);
                 });
+
+            let showingDollars = false;
+
+            // Function to convert all prices to dollars
+            function convertPricesToDollars() {
+                var priceElements = document.querySelectorAll(".card p.dollars");
+                priceElements.forEach(element => {
+                    if (showingDollars) {
+                        element.classList.add("hide");
+                    } else {
+                        element.classList.remove("hide");
+                    }
+                });
+                var priceElements = document.querySelectorAll(".card p.default");
+                priceElements.forEach(element => {
+                    if (showingDollars) {
+                        element.classList.remove("hide");
+                    } else {
+                        element.classList.add("hide");
+                    }
+                });
+                showingDollars = !showingDollars;
+            }
+
+            // Add click event listener to the button
+            document.querySelector(".button-dollars").addEventListener("click", convertPricesToDollars);
+
+
         </script>
     </div>
     <div class="wide flex-column flex-middle footer">
