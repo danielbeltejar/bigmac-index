@@ -36,6 +36,13 @@ header {
     filter: brightness(0) saturate(100%) invert(29%) sepia(0%) saturate(0%) hue-rotate(245deg) brightness(100%) contrast(100%);
 }
 
+.top-header .button img {
+    filter: none;
+    height: 27px;
+    margin-left: -2px;
+    margin-top: -2px;
+}
+
 .top-header h1 {
     align-self: center;
     margin: 20px 0;

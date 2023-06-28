@@ -13,7 +13,6 @@
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
 
     <link href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro&display=swap" rel="stylesheet" class="async">
-    <link href="https://cdn.jsdelivr.net/gh/duyplus/fontawesome-pro/css/all.min.css" rel="stylesheet" class="async" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flag-icon-css/css/flag-icon.min.css" class="async">
     <link rel="stylesheet" href="/static/main.css">
@@ -62,8 +61,8 @@
         <div class="top-header flex-row flex-middle">
             <img src="static/burger.svg">
             <h1>Bigmac Index</h1>
-            <div class="button button-dollars green-background yellow-color float-rigth">
-                <i class="fa-solid fa-badge-dollar"></i>
+            <div class="button button-dollars green-background float-rigth">
+                <img src="static/currency-exchange.svg">
             </div>
         </div>
     </header>
@@ -107,7 +106,7 @@
                         var button = document.createElement("div");
                         button.classList.add("button", "yellow-background", "white-color");
                         button.setAttribute("onclick", "location.href='none';");
-                        button.innerHTML = '<i class="fa-solid fa-chart-simple"></i>';
+                        button.innerHTML = '<img src="static/chart-simple-solid.svg">';
                         card.appendChild(button);
 
                         // Append the card to the index section
