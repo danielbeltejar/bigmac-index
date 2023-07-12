@@ -223,6 +223,7 @@ header {
 
 .float-window-body {
     padding: 20px;
+    height: inherit;
 }
 
 h1 {

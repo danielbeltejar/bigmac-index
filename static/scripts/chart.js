@@ -19,7 +19,7 @@ function chart(countryName) {
         });
 
     // make an HTTP request to fetch data
-    fetch('http://127.0.0.1:8000/prices/history/' + countryName)
+    fetch('https://bigmac.danielbeltejar.es/v1/prices/history/' + countryName)
         .then(function (response) {
             return response.json();
         })
