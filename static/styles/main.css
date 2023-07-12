@@ -198,6 +198,33 @@ header {
     font-weight: bolder;
 }
 
+.float-window {
+    display: none; /* Hide the window by default */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    height: 80%;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    z-index: 9999;
+}
+
+.float-window-header {
+    padding: 10px;
+    background-color: #ccc;
+    color: #fff;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.float-window-body {
+    padding: 20px;
+}
+
 h1 {
     color: var(--secondary-text);
     font-family: 'Source Serif Pro', serif;
@@ -205,6 +232,10 @@ h1 {
     letter-spacing: -1px;
     margin: 0px;
     font-size: 2em;
+}
+
+.float-window-header h2 {
+    margin: 0 0 0 0;
 }
 
 h2 {
@@ -218,4 +249,8 @@ h2 {
 p {
     font-size: 1.05em!important; 
     font-family: Arial, Helvetica, sans-serif;
+}
+
+.anychart-credits {
+    display: none;
 }

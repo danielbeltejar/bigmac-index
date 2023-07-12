@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8" />
 
-    <link rel="apple-touch-icon" sizes="180x180" href="/static/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/static/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/static/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/static/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/static/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/static/images/favicon-16x16.png">
     <link rel="manifest" href="/site.webmanifest">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,8 +15,17 @@
     <link href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro&display=swap" rel="stylesheet" class="async">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flag-icon-css/css/flag-icon.min.css" class="async">
-    <link rel="stylesheet" href="/static/main.css">
-    <link rel="stylesheet" href="/static/banner.css">
+    <script src="https://cdn.anychart.com/releases/v8/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/v8/js/anychart-ui.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/v8/js/anychart-exports.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/v8/js/anychart-stock.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/v8/js/anychart-data-adapter.min.js"></script>
+    <script src="https://cdn.anychart.com/csv-data/csco-daily-short.js"></script>
+    <link href="https://cdn.anychart.com/releases/v8/css/anychart-ui.min.css" type="text/css" rel="stylesheet">
+    <link href="https://cdn.anychart.com/releases/v8/fonts/css/anychart-font.min.css" type="text/css" rel="stylesheet">
+
+    <link rel="stylesheet" href="/static/styles/main.css">
+    <link rel="stylesheet" href="/static/styles/banner.css">
 
     <title>Bigmac Index</title>
 
@@ -59,95 +68,33 @@
 
         </div>
         <div class="top-header flex-row flex-middle">
-            <img src="static/burger.svg">
+            <img src="static/images/burger.svg">
             <h1>Bigmac Index</h1>
             <div class="button button-dollars green-background float-rigth">
-                <img src="static/currency-exchange.svg">
+                <img src="static/images/currency-exchange.svg">
             </div>
         </div>
     </header>
+    <div id="floatingWindow" class="float-window">
+        <div class="float-window-header flex-row flex-middle">
+            <div class="flag"></div>
+            <h2>History</h2>
+            <div class="button button-close green-background float-rigth">
+                <img style  ="height: 25px;" src="static/images/close.svg">
+            </div>
+
+        </div>
+        <div class="float-window-body">
+            <div id="container"></div>
+            <script src="static/scripts/chart.js"></script>
+        </div>
+    </div>
     <div class="index yellow-background flex-wrap flex-center wide">
         <!-- JavaScript code to generate cards for each country -->
-        <script>
-            fetch('https://bigmac.danielbeltejar.es/v1/prices/actual')
-                .then(response => response.json())
-                .then(data => {
-                    data.sort((a, b) => a[4] - b[4]);
-                    data.forEach(country => {
-                        var countryName = country[0];
-                        var price = country[1];
-                        var currency = country[3];
-                        var priceDollars = country[4];
-
-                        // Create the card element
-                        var card = document.createElement("div");
-                        card.classList.add("card", "flex-row", "flex-center", "white-background");
-
-                        // Add the flag icon
-                        var flagIcon = document.createElement("i");
-                        flagIcon.classList.add("flag-icon", "flag-icon-" + countryName.toLowerCase());
-                        card.appendChild(flagIcon);
-
-                        // Add the price
-                        var priceElement = document.createElement("p");
-                        priceElement.classList.add("text-bold", "default");
-                        priceElement.textContent = price + " " + currency;
-                        card.appendChild(priceElement);
-
-                        // Add the dollars price
-                        var priceDollarsElement = document.createElement("p");
-                        priceDollarsElement.classList.add("text-bold", "dollars");
-                        priceDollarsElement.textContent = priceDollars + " USD";
-                        priceDollarsElement.classList.add("hide")
-                        card.appendChild(priceDollarsElement);
-
-
-                        // Add the button
-                        var button = document.createElement("div");
-                        button.classList.add("button", "yellow-background", "white-color");
-                        button.setAttribute("onclick", "location.href='none';");
-                        button.innerHTML = '<img src="static/chart-simple-solid.svg">';
-                        card.appendChild(button);
-
-                        // Append the card to the index section
-                        document.querySelector(".index").appendChild(card);
-                    });
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                });
-
-            let showingDollars = false;
-
-            // Function to convert all prices to dollars
-            function convertPricesToDollars() {
-                var priceElements = document.querySelectorAll(".card p.dollars");
-                priceElements.forEach(element => {
-                    if (showingDollars) {
-                        element.classList.add("hide");
-                    } else {
-                        element.classList.remove("hide");
-                    }
-                });
-                var priceElements = document.querySelectorAll(".card p.default");
-                priceElements.forEach(element => {
-                    if (showingDollars) {
-                        element.classList.remove("hide");
-                    } else {
-                        element.classList.add("hide");
-                    }
-                });
-                showingDollars = !showingDollars;
-            }
-
-            // Add click event listener to the button
-            document.querySelector(".button-dollars").addEventListener("click", convertPricesToDollars);
-
-
-        </script>
+        <script src="static/scripts/prices.js"></script>
     </div>
     <div class="wide flex-column flex-middle footer">
-        <img src="static/drops.svg">
+        <img src="static/images/drops.svg">
         <p>This website is in no way affiliated with McDonald's.</p>
     </div>
 </body>
