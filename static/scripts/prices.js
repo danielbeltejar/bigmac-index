@@ -1,6 +1,15 @@
 fetch('https://bigmac.danielbeltejar.es/v1/prices/actual')
     .then(response => response.json())
     .then(data => {
+        // Select all elements with the "card" class
+        var cards = document.getElementsByClassName("card");
+
+        // Loop through and remove each card element
+        while (cards.length > 0) {
+        cards[0].parentNode.removeChild(cards[0]);
+        }
+
+
         data.sort((a, b) => a[4] - b[4]);
         data.forEach(country => {
             var countryName = country[0];
