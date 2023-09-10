@@ -14,4 +14,4 @@ logger = logging.getLogger()
 async def heath_check():
     if len(ActualPricesRouter.cache) != 0:
         return HTTPStatus.OK
-    return HTTPStatus.TOO_EARLY
+    return HTTPStatus.SERVICE_UNAVAILABLE
