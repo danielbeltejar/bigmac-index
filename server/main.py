@@ -9,6 +9,7 @@ from src.routers.PriceHistoryRouter import price_history_router
 from src.routers.HealthRouter import health_router
 from src.sql.MySQL import MySQL
 from src.task.ScrapeTask import ScrapeTask
+import requests
 
 app = FastAPI()
 app.include_router(health_router)
@@ -38,3 +39,4 @@ async def scrape():
 async def startup():
     # Start the scheduled task scheduler
     scheduler.start()
+    requests.get("http://127.0.0.1:8000/prices/actual")
