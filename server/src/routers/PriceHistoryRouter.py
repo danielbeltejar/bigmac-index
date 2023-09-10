@@ -22,6 +22,7 @@ class DecimalEncoder(json.JSONEncoder):
             return float(o)
         return super().default(o)
 
+
 @price_history_router.get('/prices/history/{country}', status_code=status.HTTP_200_OK)
 async def actual_prices(response: Response, country: str):
     result = MySQLGet.get_price_history(country)

@@ -35,7 +35,7 @@ async def get_latest_prices_async():
 @actual_prices_router.get('/prices/actual', status_code=status.HTTP_200_OK)
 async def actual_prices(response: Response):
     now = datetime.now()
-    json_results = None
+    json_results = cache['json_results']
 
     if 'json_results' in cache and 'expiration' in cache and cache['expiration'] < now:
         print("Cached prices expired.")
@@ -45,6 +45,5 @@ async def actual_prices(response: Response):
         print("No cached prices.")
         json_results = await get_latest_prices_async()
 
-    json_results = cache['json_results']
     response.headers["Content-Type"] = "application/json"
     return Response(json_results, media_type='application/json')
