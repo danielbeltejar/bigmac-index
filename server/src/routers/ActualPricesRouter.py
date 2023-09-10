@@ -35,15 +35,17 @@ async def get_latest_prices_async():
 @actual_prices_router.get('/prices/actual', status_code=status.HTTP_200_OK)
 async def actual_prices(response: Response):
     now = datetime.now()
-    json_results = cache['json_results']
+    json_results = None
 
     if 'json_results' in cache and 'expiration' in cache and cache['expiration'] < now:
         print("Cached prices expired.")
+        json_results = cache['json_results']
         asyncio.ensure_future(get_latest_prices_async())  # Run in the background without awaiting
 
     if len(cache) == 0:
         print("No cached prices.")
         json_results = await get_latest_prices_async()
 
+    json_results = cache['json_results']
     response.headers["Content-Type"] = "application/json"
     return Response(json_results, media_type='application/json')
