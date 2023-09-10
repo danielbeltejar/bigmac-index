@@ -11,7 +11,6 @@ from src.routers.PriceHistoryRouter import price_history_router
 from src.routers.HealthRouter import health_router
 from src.sql.MySQL import MySQL
 from src.task.ScrapeTask import ScrapeTask
-import requests
 
 app = FastAPI()
 app.include_router(health_router)
@@ -37,6 +36,7 @@ mysql = MySQL()
 @scheduler.scheduled_job('interval', hours=6)
 async def scrape():
     ScrapeTask()
+    await get_latest_prices_async()
 
 
 @app.on_event("startup")
