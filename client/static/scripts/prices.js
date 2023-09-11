@@ -1,12 +1,10 @@
 fetch('https://bigmac.danielbeltejar.es/v1/prices/actual')
     .then(response => response.json())
     .then(data => {
-        // Select all elements with the "card" class
         var cards = document.getElementsByClassName("card");
 
-        // Loop through and remove each card element
         while (cards.length > 0) {
-        cards[0].parentNode.removeChild(cards[0]);
+            cards[0].parentNode.removeChild(cards[0]);
         }
 
 
@@ -46,14 +44,13 @@ fetch('https://bigmac.danielbeltejar.es/v1/prices/actual')
             button.id = countryName.toLowerCase
             button.innerHTML = '<img src="static/images/chart-simple-solid.svg">';
             button.addEventListener("click", function () {
-                floatingWindow.style.display = "block"; // Show the window
+                floatingWindow.style.display = "block";
                 chart(countryName);
             });
 
 
             card.appendChild(button);
 
-            // Append the card to the index section
             document.querySelector(".index").appendChild(card);
         });
     })
@@ -84,6 +81,5 @@ function convertPricesToDollars() {
     showingDollars = !showingDollars;
 }
 
-// Add click event listener to the button
 document.querySelector(".button-dollars").addEventListener("click", convertPricesToDollars);
 

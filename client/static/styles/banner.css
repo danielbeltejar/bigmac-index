@@ -26,10 +26,10 @@
 .banner p {
     color: var(--primary-color);
     margin: 0;
-    font-size: 0.8em!important;
+    font-size: 0.8em !important;
 }
 
 .banner-text p:hover {
     border-bottom: 2px solid var(--primary-color);
     padding-top: 2px;
-  }
+}
