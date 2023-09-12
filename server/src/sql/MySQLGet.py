@@ -41,9 +41,9 @@ class MySQLGet(object):
             for country, price, date in results
         ]
 
-        if len(results_with_currency) == 1:
-            fake_value = ("2023-06-06", (results[0][1]) - Decimal(0.001))
-            results_with_currency.insert(0, fake_value)
+ ##       if len(results_with_currency) == 1:
+ ##           fake_value = ("2023-06-06", (results[0][1]) - Decimal(0.001))
+ ##           results_with_currency.insert(0, fake_value)
 
         return results_with_currency
 
