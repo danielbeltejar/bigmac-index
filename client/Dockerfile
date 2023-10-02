@@ -2,7 +2,7 @@
 FROM ghcr.io/nginxinc/nginx-unprivileged:stable-alpine-slim
 
 # Copy your HTML website files to the Nginx webroot directory
-COPY ./static/ /usr/share/nginx/html
+COPY . /usr/share/nginx/html
 
 # Copy your custom nginx.conf to the Nginx configuration directory
 COPY ./nginx.conf /etc/nginx/nginx.conf
