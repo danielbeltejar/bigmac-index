@@ -16,7 +16,7 @@ ENV PYTHONUNBUFFERED 1
 
 # Install system dependencies
 RUN apk update \
-    && apk add --no-cache mariadb-connector-c-dev gcc \
+    && apk add --no-cache mariadb-connector-c-dev gcc musl-dev \
     && rm -rf /var/cache/apk/*
 
 # Create the app directory
