@@ -2,7 +2,10 @@ FROM python:3.11-alpine
 
 USER root
 
-# Add 'shadow' package, update 'nginx' user ID and group ID
+# Create a non-root user to run the application
+RUN adduser -D appuser
+
+# Add 'shadow' package, update 'appuser' user ID and group ID
 RUN apk --no-cache add shadow && usermod -u 10001 appuser && groupmod -g 10001 appuser
 
 # Remove the 'shadow' package to reduce image size
