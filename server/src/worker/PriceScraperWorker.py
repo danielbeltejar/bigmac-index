@@ -43,7 +43,7 @@ class PriceScraperWorker(PriceScraperTask):
         # Find the script tag containing the JSON data
         script_tags = soup.select('script[type="application/ld+json"]')
         script_tags += soup.select('script[type="application/json"]')
-        bigmac_name = ["big mac", "big mac®", "hamburguesa bigmac", "big mac™", "big mac ™", "big mac [560.0 cals]",
+        bigmac_name = ["big mac", "big mac®", "hamburguesa bigmac", "Hamburguesa Big Mac", "big mac™", "big mac ™", "big mac [560.0 cals]",
                        "Big Mac [560.0 Cals]", "ビッグマック Big Mac", "McCombo Big Mac"]
 
         menu_jsons = []
@@ -70,7 +70,7 @@ class PriceScraperWorker(PriceScraperTask):
             if self._price is not None:
                     # Print the price, country and currency of the menu item
                     print("=" * 50)
-                    print(f"Big Mac: {self._price} {self._currency}")
+                    print(f"Big Mac: {self._price} {self._currency} {self._country}")
 
                     # Print the time taken to scrape the menu item
                     print(f"Scraped in {(time.time() - start_time) * 1000:.2f} ms.")
@@ -82,9 +82,14 @@ class PriceScraperWorker(PriceScraperTask):
             for title in title_variations:
                 if "title" in data and str(data["title"]).lower() == title.lower():
                     numeric_value = data.get("priceTagline").get("text")
+
                     if numeric_value.__contains__(".") and numeric_value.__contains__(","):
                         numeric_value = numeric_value.replace(",", "")
                         numeric_value = numeric_value.split(".")[0].replace(".", "")
+
+                    elif numeric_value.__contains__(",") and len(numeric_value.split(",")[1]) > 2:
+                        numeric_value = numeric_value.replace(",", "")
+
                     numeric_value: str = numeric_value.replace(" ", "").replace(',', '.')
                     numeric_value = re.findall(r'[\d,]+\.*\d*', numeric_value)[0]
                     numeric_value = numeric_value.replace(".00", "")
