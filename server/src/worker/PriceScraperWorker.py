@@ -82,16 +82,16 @@ class PriceScraperWorker(PriceScraperTask):
             for title in title_variations:
                 if "title" in data and str(data["title"]).lower() == title.lower():
                     numeric_value = data.get("priceTagline").get("text")
+                    numeric_value: str = numeric_value.replace(" ", "").replace(',', '.')
+                    numeric_value = re.findall(r'[\d,]+\.*\d*', numeric_value)[0]
 
                     if numeric_value.__contains__(".") and numeric_value.__contains__(","):
                         numeric_value = numeric_value.replace(",", "")
                         numeric_value = numeric_value.split(".")[0].replace(".", "")
 
-                    elif numeric_value.__contains__(",") and len(numeric_value.split(",")[1]) > 2:
-                        numeric_value = numeric_value.replace(",", "")
+                    elif numeric_value.__contains__(".") and len(numeric_value.split(".")[1]) > 2:
+                        numeric_value = numeric_value.replace(".", "")
 
-                    numeric_value: str = numeric_value.replace(" ", "").replace(',', '.')
-                    numeric_value = re.findall(r'[\d,]+\.*\d*', numeric_value)[0]
                     numeric_value = numeric_value.replace(".00", "")
                     return Decimal(numeric_value)
             for value in data.values():

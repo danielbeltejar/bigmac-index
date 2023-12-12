@@ -1,13 +1,18 @@
 [
   {
-    "country": "cl",
-    "currency": "CLP",
-    "url": "https://www.ubereats.com/cl-en/store/mcdonalds-pajaritos/10lxDmCRTtqsLef3GQXG_w"
-  },
-  {
     "country": "cr",
     "currency": "CRC",
     "url": "https://www.ubereats.com/cr/store/mcdonalds-pavas/LZbD1pu0TDKdDxA911MOqw/7499b148-3ff7-566c-b2bc-277fe65f129a"
+  },
+  {
+    "country": "es",
+    "currency": "EUR",
+    "url": "https://www.ubereats.com/es/store/mcdonalds-zaragoza-puerto-venecia/7xHcMkDtQdOff0-WvhiLfg"
+  },
+  {
+    "country": "cl",
+    "currency": "CLP",
+    "url": "https://www.ubereats.com/cl-en/store/mcdonalds-pajaritos/10lxDmCRTtqsLef3GQXG_w"
   },
   {
     "country": "do",
@@ -93,11 +98,6 @@
     "country": "mx",
     "currency": "MXN",
     "url": "https://www.ubereats.com/mx/store/mcdonalds-plaza-san-juan/ZymASVTHSImWnf_Znz5QRA/b679ecf4-d924-5cdb-be79-5a4b0e278152"
-  },
-  {
-    "country": "es",
-    "currency": "EUR",
-    "url": "https://www.ubereats.com/es/store/mcdonalds-zaragoza-puerto-venecia/7xHcMkDtQdOff0-WvhiLfg"
   },
   {
     "country": "de",
