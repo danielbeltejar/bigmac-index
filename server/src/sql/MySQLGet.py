@@ -83,8 +83,8 @@ class MySQLGet(object):
         cursor.close()
 
         # Add currency information to the tuples
-        #results_with_currency = [(country, price, str(date), currencies[country.lower()]) for country, price, date in
-        #                         results]
+        results_with_currency = [(country, price, str(date), currencies[country.lower()]) for country, price, date in
+                                 results]
 
         # Initialize the currency converter
         c = CurrencyRates()
