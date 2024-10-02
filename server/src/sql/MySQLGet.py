@@ -82,7 +82,7 @@ class MySQLGet(object):
         for country, price, date in results:
                 currency = currencies[country.lower()]
                 try:
-                    usd_price = exchange(currency, 'USD', float(price))
+                    usd_price = exchange(currency, 'USD', round(float(price),2))
                 except Exception:
                     usd_price = float(0)
                 results_with_currency.append((country, price, str(date), currency, usd_price))
