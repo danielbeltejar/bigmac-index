@@ -81,7 +81,10 @@ class MySQLGet(object):
         results_with_currency = []
         for country, price, date in results:
                 currency = currencies[country.lower()]
-                usd_price = exchange(currency, 'USD', float(price))
+                try:
+                    usd_price = exchange(currency, 'USD', float(price))
+                except Exception:
+                    usd_price = float(0)
                 results_with_currency.append((country, price, str(date), currency, usd_price))
 
         return results_with_currency
