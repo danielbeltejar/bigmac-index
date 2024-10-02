@@ -50,4 +50,3 @@ urllib3==1.26.14
 uvicorn==0.20.0
 wsproto==1.2.0
 mechanize~=0.4.8
-forex-python

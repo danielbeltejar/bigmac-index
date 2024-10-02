@@ -1,9 +1,7 @@
 import json
+import requests
 
-from _decimal import Decimal
-
-from fastapi import requests
-from forex_python.converter import CurrencyRates, RatesNotAvailableError
+from requests import codes
 
 
 class MySQLGet(object):
@@ -79,14 +77,35 @@ class MySQLGet(object):
         results = cursor.fetchall()
         cursor.close()
 
-        # Initialize the currency converter
-        c = CurrencyRates()
-
         # Add currency information to the tuples
         results_with_currency = []
         for country, price, date in results:
                 currency = currencies[country.lower()]
-                usd_price = c.convert(currency, 'USD', float(price))
+                usd_price = exchange(currency, 'USD', float(price))
                 results_with_currency.append((country, price, str(date), currency, usd_price))
 
         return results_with_currency
+
+
+def exchange(f: str, t: str, a: float) -> float:
+    params = {
+        "from": f,
+        "to": t,
+        "amount": a,
+    }
+
+    headers = {
+        "Authorization": "FREE",
+    }
+
+    response = requests.get(
+        "https://exchange.nanoapi.dev/api/exchange",
+        params=params,
+        headers=headers,
+        timeout=10
+    )
+
+    if response.status_code != codes.ok:
+        raise Exception(f"invalid api return code {response.status_code}")
+
+    return response.json()["nanoapi"]
