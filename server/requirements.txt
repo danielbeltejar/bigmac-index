@@ -26,6 +26,7 @@ MarkupSafe==2.1.5
 mechanize==0.4.10
 pendulum==3.0.0
 pydantic==2.9.2
+pydantic-settings==2.5.2
 pydantic_core==2.23.4
 pypika-tortoise==0.1.6
 python-dateutil==2.9.0.post0
