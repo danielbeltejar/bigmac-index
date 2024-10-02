@@ -1,7 +1,7 @@
 import json
 
 from _decimal import Decimal
-from google_currency import convert
+from forex_python.converter import CurrencyRates
 
 
 class MySQLGet(object):
@@ -83,14 +83,17 @@ class MySQLGet(object):
         cursor.close()
 
         # Add currency information to the tuples
-        results_with_currency = [(country, price, str(date), currencies[country.lower()]) for country, price, date in
-                                 results]
+        #results_with_currency = [(country, price, str(date), currencies[country.lower()]) for country, price, date in
+        #                         results]
+
+        # Initialize the currency converter
+        c = CurrencyRates()
 
         # Add currency information to the tuples
         results_with_currency = [
             (
                 country, price, str(date), currencies[country.lower()],
-                json.loads(convert(currencies[country.lower()], 'USD', float(price)))['amount']
+                c.convert(currencies[country.lower()], 'USD', float(price))  # Convert to USD
             )
             for country, price, date in results
         ]
