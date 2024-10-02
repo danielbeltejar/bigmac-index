@@ -1,7 +1,9 @@
 import json
 
 from _decimal import Decimal
-from forex_python.converter import CurrencyRates
+
+from fastapi import requests
+from forex_python.converter import CurrencyRates, RatesNotAvailableError
 
 
 class MySQLGet(object):
@@ -71,31 +73,27 @@ class MySQLGet(object):
             WHERE bp.country IN ({});
         """
 
-        # Formatear los valores de los países para incluir en la consulta
         placeholders = ','.join(['%s'] * len(country_names))
         query = query.format(placeholders)
-
-        # Ejecutar la consulta con los valores de los países
         cursor.execute(query, country_names)
         results = cursor.fetchall()
-
-        # Close the cursor and connection
         cursor.close()
-
-        # Add currency information to the tuples
-        results_with_currency = [(country, price, str(date), currencies[country.lower()]) for country, price, date in
-                                 results]
 
         # Initialize the currency converter
         c = CurrencyRates()
 
         # Add currency information to the tuples
-        results_with_currency = [
-            (
-                country, price, str(date), currencies[country.lower()],
-                c.convert(currencies[country.lower()], 'USD', float(price))  # Convert to USD
-            )
-            for country, price, date in results
-        ]
+        results_with_currency = []
+        for country, price, date in results:
+            try:
+                currency = currencies[country.lower()]
+                usd_price = c.convert(currency, 'USD', float(price))
+                results_with_currency.append((country, price, str(date), currency, usd_price))
+            except RatesNotAvailableError:
+                print(f"Conversion rate not available for {currency}")
+                results_with_currency.append((country, price, str(date), currency, None))
+            except Exception as e:
+                print(f"Unexpected error for {country}: {e}")
+                results_with_currency.append((country, price, str(date), currency, None))
 
         return results_with_currency
