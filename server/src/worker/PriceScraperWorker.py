@@ -1,9 +1,7 @@
 import json
 import re
 import time
-from datetime import datetime, timedelta
 
-import requests
 from _decimal import Decimal
 from bs4 import BeautifulSoup
 from mechanize import Browser
