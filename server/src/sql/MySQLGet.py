@@ -85,15 +85,8 @@ class MySQLGet(object):
         # Add currency information to the tuples
         results_with_currency = []
         for country, price, date in results:
-            try:
                 currency = currencies[country.lower()]
                 usd_price = c.convert(currency, 'USD', float(price))
                 results_with_currency.append((country, price, str(date), currency, usd_price))
-            except RatesNotAvailableError:
-                print(f"Conversion rate not available for {currency}")
-                results_with_currency.append((country, price, str(date), currency, None))
-            except Exception as e:
-                print(f"Unexpected error for {country}: {e}")
-                results_with_currency.append((country, price, str(date), currency, None))
 
         return results_with_currency
