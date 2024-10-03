@@ -33,7 +33,12 @@ fetch('https://bigmac.danielbeltejar.es/v1/prices/actual')
             // Add the dollars price
             var priceDollarsElement = document.createElement("p");
             priceDollarsElement.classList.add("text-bold", "dollars");
+            if(priceDollars == 0) {
+                priceDollarsElement.textContent = "No data"    
+            } else {
             priceDollarsElement.textContent = priceDollars + " USD";
+            }
+
             priceDollarsElement.classList.add("hide")
             card.appendChild(priceDollarsElement);
 
