@@ -18,12 +18,12 @@ extraEnv:
   value: bigmac
 - name: DB_USER
   value: bigmac
-extraEnvFrom:
 - name: DB_PASSWORD
   valueFrom:
     secretKeyRef:
       key: password
       name: bigmac-index-secret
+extraEnvFrom: []
 resources:
   requests:
     memory: "128Mi"
