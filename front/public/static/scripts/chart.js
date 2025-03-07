@@ -1,10 +1,10 @@
 function chart(countryName) {
     const container = document.getElementById("container");
-    container.innerHTML = ""; // Clear the container by removing its child elements
+    container.innerHTML = "";
 
     const floatingWindow = document.getElementById("floatingWindow");
     const divEl = floatingWindow.querySelector(".flag");
-    divEl.classList.add("flag-icon", "flag-icon-" + countryName.toLowerCase()); // Set the new text content for the <h2> element
+    divEl.classList.add("flag-icon", "flag-icon-" + countryName.toLowerCase());
 
 
     // create line chart
@@ -19,7 +19,7 @@ function chart(countryName) {
         });
 
     // make an HTTP request to fetch data
-    fetch('https://bigmac.danielbeltejar.es/v1/prices/history/' + countryName)
+    fetch(`${window.location.origin}/api/prices/history/` + countryName)
         .then(function (response) {
             return response.json();
         })

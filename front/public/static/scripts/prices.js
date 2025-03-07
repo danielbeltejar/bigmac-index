@@ -1,4 +1,4 @@
-fetch('https://bigmac.danielbeltejar.es/v1/prices/actual')
+fetch(`${window.location.origin}/api/prices/actual`)
     .then(response => response.json())
     .then(data => {
         var cards = document.getElementsByClassName("card");
