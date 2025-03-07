@@ -15,22 +15,18 @@ fetch(`${window.location.origin}/api/prices/actual`)
             var currency = country[3];
             var priceDollars = country[4];
 
-            // Create the card element
             var card = document.createElement("div");
             card.classList.add("card", "flex-row", "flex-center", "white-background");
 
-            // Add the flag icon
             var flagIcon = document.createElement("i");
             flagIcon.classList.add("flag-icon", "flag-icon-" + countryName.toLowerCase());
             card.appendChild(flagIcon);
 
-            // Add the price
             var priceElement = document.createElement("p");
             priceElement.classList.add("text-bold", "default");
             priceElement.textContent = price + " " + currency;
             card.appendChild(priceElement);
 
-            // Add the dollars price
             var priceDollarsElement = document.createElement("p");
             priceDollarsElement.classList.add("text-bold", "dollars");
             if(priceDollars == 0) {
@@ -43,7 +39,6 @@ fetch(`${window.location.origin}/api/prices/actual`)
             card.appendChild(priceDollarsElement);
 
 
-            // Add the button
             var button = document.createElement("div");
             button.classList.add("button", "yellow-background", "white-color");
             button.id = countryName.toLowerCase
@@ -65,7 +60,6 @@ fetch(`${window.location.origin}/api/prices/actual`)
 
 let showingDollars = false;
 
-// Function to convert all prices to dollars
 function convertPricesToDollars() {
     var priceElements = document.querySelectorAll(".card p.dollars");
     priceElements.forEach(element => {
