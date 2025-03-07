@@ -71,8 +71,8 @@ spec:
             httpGet:
               path: /healthz
               port: {{ .Values.service.targetPort }}
-            periodSeconds: 5
-            initialDelaySeconds: 10
+            periodSeconds: 15
+            initialDelaySeconds: 60
           volumeMounts:
           {{- with .Values.volumeMounts }}
             {{- toYaml . | nindent 12 }}
