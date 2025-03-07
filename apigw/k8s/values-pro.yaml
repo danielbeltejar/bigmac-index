@@ -31,4 +31,4 @@ config:
   - pattern: "/api/prices"
     method:
     - "GET"
-    backend_dns: "http://back-service.pre-bigmac-index-back.svc.cluster.local:80"
+    backend_dns: "http://back-service.pro-bigmac-index-back.svc.cluster.local:80"
