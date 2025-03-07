@@ -1,0 +1,31 @@
+namespace: pre-bigmac-index-back
+replicaCount: 1
+registry: harbor.server.local/danielbeltejar/bigmac-index
+image:
+  pullPolicy: IfNotPresent
+service:
+  type: ClusterIP
+  port: 80
+  targetPort: 8000
+extraEnv:
+- name: "TZ"
+  value: "UTC"
+- name: DB_HOST
+  value: mariadb-service
+- name: DB_PORT
+  value: "3306"
+- name: DB_DATABASE
+  value: bigmac
+- name: DB_USER
+  value: bigmac
+extraEnvFrom:
+- name: DB_PASSWORD
+  valueFrom:
+    secretKeyRef:
+      key: password
+      name: bigmac-index-secret
+resources:
+  requests:
+    memory: "128Mi"
+  limits:
+    memory: "256Mi"

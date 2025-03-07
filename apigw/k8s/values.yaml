@@ -1,0 +1,31 @@
+replicaCount: 1
+namespace: pre-bigmac-index-front
+service:
+  type: ClusterIP
+  port: 80
+  targetPort: 8080
+image:
+  pullPolicy: Always
+extraEnv:
+- name: "TZ"
+  value: "UTC"
+extraEnvFrom: []
+resources:
+  requests:
+    memory: "16Mi"
+  limits:
+    memory: "32Mi"
+ingress:
+  enabled: true
+  annotations:
+    nginx.ingress.kubernetes.io/proxy-set-header: X-Real-IP $remote_addr
+    nginx.ingress.kubernetes.io/use-forwarded-headers: "true"
+  class: "nginx"
+  host: "bigmac.pre.server.local"
+  tls: true
+config:
+  routes:
+  - pattern: "/api/back"
+    method:
+    - "GET"
+    backend_dns: "http://back-service.pre-bigmac-index-back.svc.cluster.local:80"
