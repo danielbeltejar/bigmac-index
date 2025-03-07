@@ -25,7 +25,7 @@ ingress:
   tls: true
 config:
   routes:
-  - pattern: "/api/back"
+  - pattern: "/api/prices"
     method:
     - "GET"
     backend_dns: "http://back-service.pre-bigmac-index-back.svc.cluster.local:80"
