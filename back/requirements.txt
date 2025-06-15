@@ -19,7 +19,7 @@ greenlet==2.0.2
 h11==0.14.0
 idna==3.7
 mysql==0.0.3
-mysql-connector-python==8.0.32
+mysql-connector-python==9.2.0
 mysqlclient==2.1.1
 outcome==1.2.0
 protobuf==3.20.3
