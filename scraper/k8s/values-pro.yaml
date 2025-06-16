@@ -3,10 +3,6 @@ replicaCount: 1
 registry: harbor.server.local/danielbeltejar/bigmac-index
 image:
   pullPolicy: IfNotPresent
-service:
-  type: ClusterIP
-  port: 80
-  targetPort: 8000
 extraEnv:
 - name: "TZ"
   value: "UTC"
