@@ -35,5 +35,5 @@ RUN pip install --no-cache-dir -r requirements.txt
 USER appuser
 
 # Run the application with uvicorn
-CMD ["src/main.py"]
+CMD ["main.py"]
 
