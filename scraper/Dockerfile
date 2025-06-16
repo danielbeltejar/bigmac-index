@@ -6,7 +6,7 @@ USER root
 RUN adduser -D appuser
 
 # Add 'shadow' package, update 'appuser' user ID and group ID
-RUN apk --no-cache add shadow && usermod -u 65534 appuser && groupmod -g 65534 appuser
+RUN apk --no-cache add shadow && usermod -u 65533 appuser && groupmod -g 65533 appuser
 
 # Remove the 'shadow' package to reduce image size
 RUN apk del shadow
