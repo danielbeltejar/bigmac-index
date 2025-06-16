@@ -56,22 +56,6 @@ spec:
                   type: RuntimeDefault
               resources:
                 {{- toYaml .Values.resources | nindent 12 }}
-              readinessProbe:
-                httpGet:
-                  path: /healthz
-                  port: {{ .Values.service.targetPort }}
-                periodSeconds: 30
-              livenessProbe:
-                httpGet:
-                  path: /healthz
-                  port: {{ .Values.service.targetPort }}
-                periodSeconds: 30
-              startupProbe:
-                httpGet:
-                  path: /healthz
-                  port: {{ .Values.service.targetPort }}
-                periodSeconds: 15
-                initialDelaySeconds: 60
               volumeMounts:
               {{- with .Values.volumeMounts }}
                 {{- toYaml . | nindent 12 }}
