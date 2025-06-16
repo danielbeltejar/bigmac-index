@@ -41,8 +41,6 @@ spec:
                 {{- with .Values.extraEnvFrom }}
                   {{- toYaml . | nindent 12 }}
                 {{- end }}
-              ports:
-                - containerPort: {{ .Values.service.targetPort }}
               securityContext:
                 capabilities:
                   drop:
