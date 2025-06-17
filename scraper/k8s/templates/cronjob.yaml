@@ -10,10 +10,9 @@ spec:
   jobTemplate:
     spec:
       template:
-        app: {{ include "app.fullname" . }}
         metadata:
           labels:
-            {{- include "app.selectorLabels" . | nindent 8 }}
+            {{- include "app.selectorLabels" . | nindent 12 }}
         spec:
           securityContext:
             fsGroup: 65534
