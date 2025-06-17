@@ -22,7 +22,7 @@ class DecimalEncoder(json.JSONEncoder):
         return super().default(o)
 
 
-async def get_latest_prices_async():
+def get_latest_prices_async():
     print("Getting the latest prices from the database.")
     results = MySQLGet.get_latest_prices()
     json_results = json.dumps(results, cls=DecimalEncoder)

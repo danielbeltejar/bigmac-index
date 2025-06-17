@@ -17,7 +17,7 @@ try:
         mysql = MySQL()
 
         logger.info("Background task for price fetching created")
-        asyncio.create_task(get_latest_prices_async())
+        get_latest_prices_async()
         logger.info("Initial price fetch completed")
 
 except Exception as e:

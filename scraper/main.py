@@ -5,8 +5,10 @@ from src.sql.MySQL import MySQL
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
+mysql = MySQL()
+
+
 def main():
-    mysql = MySQL()
     ScrapeTask()
     logger.info("Initial scrape task completed")
 
