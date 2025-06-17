@@ -20,8 +20,9 @@ ingress:
   annotations:
     nginx.ingress.kubernetes.io/proxy-set-header: X-Real-IP $remote_addr
     nginx.ingress.kubernetes.io/use-forwarded-headers: "true"
+    cert-manager.io/cluster-issuer: letsencrypt-ovh
   class: "nginx-local"
-  host: "bigmac.pre.server.local"
+  host: "bigmac.pre.danielbeltejar.es"
   tls: true
 config:
   routes:
