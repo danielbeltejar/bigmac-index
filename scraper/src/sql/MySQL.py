@@ -28,7 +28,7 @@ class MySQL(object):
         cursor = self.get_connector().cursor()
 
         # Execute the SQL commands
-        cursor.execute(sql_script)
+        cursor.execute(sql_script, multi=True)
 
         # Commit the changes
         self.get_connector().commit()
