@@ -20,7 +20,6 @@ class MySQL(object):
             host=mysql_config.get_host(),
             port=mysql_config.get_port(),
             database=mysql_config.get_database(),
-            sql_mode=""  # Set an empty SQL mode to avoid using None
         )
 
     def _create(self):
