@@ -10,6 +10,7 @@ spec:
   jobTemplate:
     spec:
       template:
+        app: {{ include "app.fullname" . }}
         metadata:
           labels:
             {{- include "app.selectorLabels" . | nindent 8 }}
