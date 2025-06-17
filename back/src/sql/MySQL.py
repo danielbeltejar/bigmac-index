@@ -14,10 +14,14 @@ class MySQL(object):
 
     def _connect(self):
         mysql_config = MySQLConfig()
-        self._connector = mysql.connector.connect(user=mysql_config.get_user(), password=mysql_config.get_password(),
-                                                  host=mysql_config.get_host(),
-                                                  port=mysql_config.get_port(),
-                                                  database=mysql_config.get_database())
+        self._connector = mysql.connector.connect(
+            user=mysql_config.get_user(),
+            password=mysql_config.get_password(),
+            host=mysql_config.get_host(),
+            port=mysql_config.get_port(),
+            database=mysql_config.get_database(),
+            sql_mode=""  # Set an empty SQL mode to avoid using None
+        )
 
     def _create(self):
         # Open the SQL file and read the contents
