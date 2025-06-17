@@ -5,7 +5,9 @@ charset-normalizer==3.4.2
 html5lib==1.1
 idna==3.10
 mechanize==0.4.10
-mysql-connector-python==9.3.0
+mysql==0.0.3
+mysql-connector-python==8.0.32
+mysqlclient==2.1.1
 requests==2.32.4
 six==1.17.0
 soupsieve==2.7

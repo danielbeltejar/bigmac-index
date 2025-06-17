@@ -4,7 +4,9 @@ certifi==2025.6.15
 charset-normalizer==3.4.2
 fastapi==0.115.12
 idna==3.10
-mysql-connector-python==9.3.0
+mysql==0.0.3
+mysql-connector-python==8.0.32
+mysqlclient==2.1.1
 pydantic==2.11.7
 pydantic_core==2.33.2
 requests==2.32.4
