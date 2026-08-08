@@ -1,7 +1,5 @@
 FROM python:3.11-alpine
 
-USER root
-
 # Create a non-root user to run the application
 RUN adduser -D appuser
 
@@ -36,4 +34,3 @@ USER appuser
 
 # Run the application with uvicorn
 CMD ["python", "main.py"]
-
