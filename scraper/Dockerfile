@@ -13,8 +13,8 @@ RUN apk del shadow
 ENV PYTHONUNBUFFERED 1
 
 # Install system dependencies
-RUN apk update \
-    && apk add --no-cache mariadb-connector-c-dev gcc musl-dev \
+RUN apk add --no-cache mariadb-connector-c \
+    && apk add --no-cache --virtual .build-deps mariadb-connector-c-dev gcc musl-dev \
     && rm -rf /var/cache/apk/*
 
 # Create the app directory
@@ -27,7 +27,10 @@ RUN chown -R appuser:appuser /app
 
 # Copy the requirements file and install project dependencies
 COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt \
+    && pip uninstall -y pip setuptools wheel \
+    && apk del .build-deps \
+    && rm -rf /root/.cache /var/cache/apk/*
 
 # Switch to the non-root user
 USER appuser
